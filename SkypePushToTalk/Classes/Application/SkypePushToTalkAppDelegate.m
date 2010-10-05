@@ -13,6 +13,9 @@ enum {
 
 @interface SkypePushToTalkAppDelegate ()
 
+- (void)hotKeyDown;
+- (void)hotKeyUp;
+
 - (void)updateOpenAtLoginMenuItem;
 - (void)updateMenuToSkypeState;
 
@@ -30,11 +33,28 @@ enum {
 	[_statusItem setMenu:_statusItemMenu];
 	
 	_hotKeyCenter = [[DDHotKeyCenter alloc] init];
-	BOOL hotKeyOK = [_hotKeyCenter registerHotKeyWithKeyCode:kVK_F1 modifierFlags:0 target:self action:@selector(pushToTalkPressed:) object:nil];
-	NSAssert(hotKeyOK, @"Cannot register hotkey");
+//	BOOL hotKeyOK = [_hotKeyCenter registerHotKeyWithKeyCode:kVK_F1 modifierFlags:0 target:self action:@selector(pushToTalkPressed:) object:nil];
+//	NSAssert(hotKeyOK, @"Cannot register hotkey");
 
 	[self updateOpenAtLoginMenuItem];
 	[self updateMenuToSkypeState];
+
+	NSLog(@"AXAPIEnabled() == %d", AXAPIEnabled());
+	NSLog(@"AXIsProcessTrusted() == %d", AXIsProcessTrusted());
+	//AXMakeProcessTrusted([[NSBundle mainBundle] executablePath]);
+
+	[NSEvent addGlobalMonitorForEventsMatchingMask:NSKeyDownMask|NSKeyUpMask handler:^(NSEvent *incomingEvent) {
+		NSLog(@"Global event monitor called for event %d", [incomingEvent type]);
+		if ([incomingEvent type] == NSKeyDown) {
+			if ([incomingEvent keyCode] == kVK_F1) {
+				[self hotKeyDown];
+			}
+		} else if ([incomingEvent type] == NSKeyUp) {
+			if ([incomingEvent keyCode] == kVK_F1) {
+				[self hotKeyUp];
+			}
+		}
+	}];
 
 	[[SkypeController sharedSkypeController] addObserver:self forKeyPath:@"muted" options:0 context:nil];
 	[[SkypeController sharedSkypeController] connectToSkype];
@@ -45,11 +65,43 @@ enum {
 }
 
 - (void)pushToTalkPressed:(NSEvent *)event {
+	[self hotKeyUp];
+}
+
+
+#pragma mark Hot Key Handling
+
+- (void)hotKeyDown {
+	if (!_hotKeyDownReceived) {
+		_hotKeyDownReceived = YES;
+		_hotKeyDownAt = [[NSDate date] timeIntervalSinceReferenceDate];
+		_wasMutedAtKeyDown = [[SkypeController sharedSkypeController] isMuted];
+
+		NSLog(@"Hot Key Pressed, muted=%d, setting muted to OFF", _wasMutedAtKeyDown);
+		[[SkypeController sharedSkypeController] setMuted:NO];
+	}
+}
+
+- (void)hotKeyUp {
 	BOOL avail = [SkypeController sharedSkypeController].connected;
 	if (avail) {
-		BOOL muted = [[SkypeController sharedSkypeController] isMuted];
-		[[SkypeController sharedSkypeController] setMuted:!muted];
+		BOOL newMuted;
+		if (_hotKeyDownReceived) {
+			NSTimeInterval elapsed = [[NSDate date] timeIntervalSinceReferenceDate] - _hotKeyDownAt;
+			if (elapsed >= 0.2) {
+				newMuted = YES;
+			} else {
+				newMuted = !_wasMutedAtKeyDown;
+			}
+		} else {
+			newMuted = ![[SkypeController sharedSkypeController] isMuted];
+		}
+
+		NSLog(@"Hot Key Released, setting muted to %d", newMuted);
+		[[SkypeController sharedSkypeController] setMuted:newMuted];
 	}
+
+	_hotKeyDownReceived = NO;
 }
 
 

@@ -13,6 +13,10 @@
     NSWindow *window;
 	NSStatusItem *_statusItem;
 	DDHotKeyCenter *_hotKeyCenter;
+
+	BOOL _hotKeyDownReceived;
+	BOOL _wasMutedAtKeyDown;
+	NSTimeInterval _hotKeyDownAt;
 }
 
 @property (assign) IBOutlet NSWindow *window;
