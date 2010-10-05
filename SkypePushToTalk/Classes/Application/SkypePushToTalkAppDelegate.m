@@ -1,11 +1,20 @@
 
 #import "SkypePushToTalkAppDelegate.h"
 #import "DDHotKeyCenter.h"
+#import "LoginItemController.h"
 
 // copied from Carbon to avoid inclusion
 enum {
 	kVK_F1                        = 0x7A,
 };
+
+
+@interface SkypePushToTalkAppDelegate ()
+
+- (void)updateOpenAtLoginMenuItem;
+
+@end
+
 
 @implementation SkypePushToTalkAppDelegate
 
@@ -20,6 +29,8 @@ enum {
 	_hotKeyCenter = [[DDHotKeyCenter alloc] init];
 	BOOL hotKeyOK = [_hotKeyCenter registerHotKeyWithKeyCode:kVK_F1 modifierFlags:0 target:self action:@selector(pushToTalkPressed:) object:nil];
 	NSAssert(hotKeyOK, @"Cannot register hotkey");
+
+	[self updateOpenAtLoginMenuItem];
 }
 
 - (IBAction)quitApplication:(id)sender {
@@ -29,5 +40,19 @@ enum {
 - (void)pushToTalkPressed:(NSEvent *)event {
 	[[NSApplication sharedApplication] terminate:self];
 }
+
+
+#pragma mark -
+#pragma mark Open at Login
+
+- (IBAction)toggleOpenAtLogin:(id)sender {
+	[LoginItemController sharedController].loginItemEnabled = ![LoginItemController sharedController].loginItemEnabled;
+	[self updateOpenAtLoginMenuItem];
+}
+
+- (void)updateOpenAtLoginMenuItem {
+	[_openAtLoginMenuItem setState:([LoginItemController sharedController].loginItemEnabled ? NSOnState : NSOffState)];
+}
+
 
 @end

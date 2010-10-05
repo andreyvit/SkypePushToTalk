@@ -11,6 +11,7 @@
 		433C1143125AFC940032DD5A /* SkypePushToTalkAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 433C1142125AFC940032DD5A /* SkypePushToTalkAppDelegate.m */; };
 		433C116A125B05880032DD5A /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 433C1169125B05880032DD5A /* DDHotKeyCenter.m */; };
 		433C1176125B06AC0032DD5A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433C1175125B06AC0032DD5A /* Carbon.framework */; };
+		433C117F125B08030032DD5A /* LoginItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 433C117E125B08030032DD5A /* LoginItemController.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -30,6 +31,8 @@
 		433C1168125B05880032DD5A /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
 		433C1169125B05880032DD5A /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
 		433C1175125B06AC0032DD5A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		433C117D125B08030032DD5A /* LoginItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItemController.h; sourceTree = "<group>"; };
+		433C117E125B08030032DD5A /* LoginItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginItemController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SkypePushToTalk-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SkypePushToTalk-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* SkypePushToTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkypePushToTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -51,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				433C1132125AFC560032DD5A /* Application */,
+				433C117C125B07C70032DD5A /* Utilities */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -149,6 +153,15 @@
 			path = DDHotKey;
 			sourceTree = "<group>";
 		};
+		433C117C125B07C70032DD5A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				433C117D125B08030032DD5A /* LoginItemController.h */,
+				433C117E125B08030032DD5A /* LoginItemController.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -207,6 +220,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				433C1143125AFC940032DD5A /* SkypePushToTalkAppDelegate.m in Sources */,
 				433C116A125B05880032DD5A /* DDHotKeyCenter.m in Sources */,
+				433C117F125B08030032DD5A /* LoginItemController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
