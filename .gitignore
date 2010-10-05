@@ -4,3 +4,4 @@
 *.pbxuser
 *.perspectivev3
 */build/
+/builds/
