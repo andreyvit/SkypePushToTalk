@@ -19,6 +19,12 @@
 		433C12D0125B2A220032DD5A /* ptt-menubar-muted.png in Resources */ = {isa = PBXBuildFile; fileRef = 433C12CD125B2A220032DD5A /* ptt-menubar-muted.png */; };
 		433C12D1125B2A220032DD5A /* ptt-menubar-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 433C12CE125B2A220032DD5A /* ptt-menubar-normal.png */; };
 		433C12EB125B2CF00032DD5A /* ptt-menubar-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 433C12EA125B2CF00032DD5A /* ptt-menubar-highlighted.png */; };
+		433C1350125B37580032DD5A /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 433C134F125B37580032DD5A /* DBPrefsWindowController.m */; };
+		433C1358125B37890032DD5A /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 433C1357125B37880032DD5A /* PreferencesWindowController.m */; };
+		433C135B125B3A1A0032DD5A /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 433C135A125B3A1A0032DD5A /* Preferences.xib */; };
+		433C1435125B83E70032DD5A /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433C1434125B83E70032DD5A /* ShortcutRecorder.framework */; };
+		433C1440125B83ED0032DD5A /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 433C1434125B83E70032DD5A /* ShortcutRecorder.framework */; };
+		437CEA9D125B8AEA000A880E /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 437CEA9C125B8AEA000A880E /* Preferences.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -31,6 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				433C1440125B83ED0032DD5A /* ShortcutRecorder.framework in Copy Frameworks */,
 				433C11ED125B164C0032DD5A /* Skype.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -61,6 +68,15 @@
 		433C12CD125B2A220032DD5A /* ptt-menubar-muted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ptt-menubar-muted.png"; sourceTree = "<group>"; };
 		433C12CE125B2A220032DD5A /* ptt-menubar-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ptt-menubar-normal.png"; sourceTree = "<group>"; };
 		433C12EA125B2CF00032DD5A /* ptt-menubar-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ptt-menubar-highlighted.png"; sourceTree = "<group>"; };
+		433C134E125B37580032DD5A /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
+		433C134F125B37580032DD5A /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
+		433C1356125B37880032DD5A /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		433C1357125B37880032DD5A /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		433C135A125B3A1A0032DD5A /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		433C13D3125B7D670032DD5A /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		433C1434125B83E70032DD5A /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Lib/ShortcutRecorder.framework; sourceTree = "<group>"; };
+		437CEA9B125B8AEA000A880E /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		437CEA9C125B8AEA000A880E /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SkypePushToTalk-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SkypePushToTalk-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* SkypePushToTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkypePushToTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -73,6 +89,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				433C1176125B06AC0032DD5A /* Carbon.framework in Frameworks */,
 				433C11E1125B16270032DD5A /* Skype.framework in Frameworks */,
+				433C1435125B83E70032DD5A /* ShortcutRecorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +101,7 @@
 			children = (
 				433C1132125AFC560032DD5A /* Application */,
 				433C11AE125B0FB00032DD5A /* Skype */,
+				433C1351125B376B0032DD5A /* Preferences */,
 				433C117C125B07C70032DD5A /* Utilities */,
 			);
 			path = Classes;
@@ -92,6 +110,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				433C1434125B83E70032DD5A /* ShortcutRecorder.framework */,
 				433C11E0125B16270032DD5A /* Skype.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
@@ -162,8 +181,11 @@
 		433C1132125AFC560032DD5A /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				433C13D3125B7D670032DD5A /* Global.h */,
 				433C1141125AFC940032DD5A /* SkypePushToTalkAppDelegate.h */,
 				433C1142125AFC940032DD5A /* SkypePushToTalkAppDelegate.m */,
+				437CEA9B125B8AEA000A880E /* Preferences.h */,
+				437CEA9C125B8AEA000A880E /* Preferences.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -171,6 +193,7 @@
 		433C1166125B05630032DD5A /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				433C1349125B37470032DD5A /* DBPrefsWindowController */,
 				433C1167125B05720032DD5A /* DDHotKey */,
 			);
 			path = Lib;
@@ -212,6 +235,25 @@
 				433C12EA125B2CF00032DD5A /* ptt-menubar-highlighted.png */,
 			);
 			path = Icons;
+			sourceTree = "<group>";
+		};
+		433C1349125B37470032DD5A /* DBPrefsWindowController */ = {
+			isa = PBXGroup;
+			children = (
+				433C134E125B37580032DD5A /* DBPrefsWindowController.h */,
+				433C134F125B37580032DD5A /* DBPrefsWindowController.m */,
+			);
+			path = DBPrefsWindowController;
+			sourceTree = "<group>";
+		};
+		433C1351125B376B0032DD5A /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				433C1356125B37880032DD5A /* PreferencesWindowController.h */,
+				433C1357125B37880032DD5A /* PreferencesWindowController.m */,
+				433C135A125B3A1A0032DD5A /* Preferences.xib */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +306,7 @@
 				433C12D0125B2A220032DD5A /* ptt-menubar-muted.png in Resources */,
 				433C12D1125B2A220032DD5A /* ptt-menubar-normal.png in Resources */,
 				433C12EB125B2CF00032DD5A /* ptt-menubar-highlighted.png in Resources */,
+				433C135B125B3A1A0032DD5A /* Preferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +322,9 @@
 				433C116A125B05880032DD5A /* DDHotKeyCenter.m in Sources */,
 				433C117F125B08030032DD5A /* LoginItemController.m in Sources */,
 				433C11B1125B0FC40032DD5A /* SkypeController.m in Sources */,
+				433C1350125B37580032DD5A /* DBPrefsWindowController.m in Sources */,
+				433C1358125B37890032DD5A /* PreferencesWindowController.m in Sources */,
+				437CEA9D125B8AEA000A880E /* Preferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,14 +1,12 @@
 
+#import "Global.h"
 #import "SkypePushToTalkAppDelegate.h"
 #import "DDHotKeyCenter.h"
 #import "LoginItemController.h"
 #import "SkypeController.h"
+#import "PreferencesWindowController.h"
+#import "Preferences.h"
 
-
-// copied from Carbon to avoid inclusion
-enum {
-	kVK_F1                        = 0x7A,
-};
 
 #define kPushToTalkDelay 0.2
 #define kPushToTalkShowActiveDelay 0.2
@@ -21,8 +19,12 @@ enum {
 
 - (void)showPushToTalkAsActive;
 
+- (void)showPreferences;
+
 - (void)updateOpenAtLoginMenuItem;
 - (void)updateMenuToSkypeState;
+
+- (void)updateShortcutMonitoring;
 
 @end
 
@@ -42,7 +44,7 @@ enum {
 	_iconMuted  = [NSImage imageNamed:@"ptt-menubar-muted.png"];
 	
 	_hotKeyCenter = [[DDHotKeyCenter alloc] init];
-//	BOOL hotKeyOK = [_hotKeyCenter registerHotKeyWithKeyCode:kVK_F1 modifierFlags:0 target:self action:@selector(pushToTalkPressed:) object:nil];
+//	BOOL hotKeyOK = [_hotKeyCenter registerHotKeyWithKeyCode:KeyF1 modifierFlags:0 target:self action:@selector(pushToTalkPressed:) object:nil];
 //	NSAssert(hotKeyOK, @"Cannot register hotkey");
 
 	[self updateOpenAtLoginMenuItem];
@@ -52,14 +54,19 @@ enum {
 	NSLog(@"AXIsProcessTrusted() == %d", AXIsProcessTrusted());
 	//AXMakeProcessTrusted([[NSBundle mainBundle] executablePath]);
 
+	[self updateShortcutMonitoring];
 	[NSEvent addGlobalMonitorForEventsMatchingMask:NSKeyDownMask|NSKeyUpMask handler:^(NSEvent *incomingEvent) {
-		NSLog(@"Global event monitor called for event %d", [incomingEvent type]);
+		NSUInteger modifierFlags = [incomingEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask;
+		NSLog(@"Got %@ for key %d flags %X, looking for key %d flags %x",
+			  ([incomingEvent type] == NSKeyDown ? @"KeyDown" : @"KeyUp"),
+			  [incomingEvent keyCode], modifierFlags,
+			  _cachedKeyCombo.code, _cachedKeyCombo.flags);
 		if ([incomingEvent type] == NSKeyDown) {
-			if ([incomingEvent keyCode] == kVK_F1) {
+			if ([incomingEvent keyCode] == _cachedKeyCombo.code && modifierFlags == _cachedKeyCombo.flags) {
 				[self hotKeyDown];
 			}
 		} else if ([incomingEvent type] == NSKeyUp) {
-			if ([incomingEvent keyCode] == kVK_F1) {
+			if ([incomingEvent keyCode] == _cachedKeyCombo.code && modifierFlags == _cachedKeyCombo.flags) {
 				[self hotKeyUp];
 			}
 		}
@@ -68,6 +75,11 @@ enum {
 	[[SkypeController sharedSkypeController] addObserver:self forKeyPath:@"muted" options:0 context:nil];
 	[[SkypeController sharedSkypeController] addObserver:self forKeyPath:@"connected" options:0 context:nil];
 	[[SkypeController sharedSkypeController] connectToSkype];
+	
+	[[Preferences sharedPreferences] addObserver:self forKeyPath:@"shortcut" options:0 context:nil];
+	
+	if ([Preferences sharedPreferences].isFirstRun)
+		[self showPreferences];
 }
 
 - (IBAction)quitApplication:(id)sender {
@@ -78,8 +90,29 @@ enum {
 	[self hotKeyUp];
 }
 
+- (IBAction)showPreferences:(id)sender {
+	[self showPreferences];
+}
+
+
+#pragma mark -
+#pragma mark Preferences
+
+- (void)showPreferences {
+	if (preferencesWindowController == nil) {
+		preferencesWindowController = [[PreferencesWindowController alloc] init];
+	}
+	[NSApp activateIgnoringOtherApps:YES];
+	[preferencesWindowController showWindow:self];
+}
+
 
 #pragma mark Hot Key Handling
+
+- (void)updateShortcutMonitoring {
+	_cachedKeyCombo = [Preferences sharedPreferences].shortcutCombo;
+	NSLog(@"Updated cached key combo");
+}
 
 - (void)hotKeyDown {
 	if (!_hotKeyDownReceived) {
@@ -180,6 +213,8 @@ enum {
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	if ([keyPath isEqualToString:@"muted"] || [keyPath isEqualToString:@"connected"]) {
 		[self updateMenuToSkypeState];
+	} else if ([keyPath isEqualToString:@"shortcut"]) {
+		[self updateShortcutMonitoring];
 	}
 }
 
