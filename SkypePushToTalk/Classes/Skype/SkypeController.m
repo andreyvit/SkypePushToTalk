@@ -120,6 +120,8 @@ static SkypeController *sharedSkypeController;
 	NSLog(@"skypeAttachResponse:%d", aAttachResponseCode);
 	if (aAttachResponseCode == 1) {
 		[self connectionEstablished];
+	} else {
+		self.connected = NO;
 	}
 }
 

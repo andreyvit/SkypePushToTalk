@@ -66,6 +66,7 @@ enum {
 	}];
 
 	[[SkypeController sharedSkypeController] addObserver:self forKeyPath:@"muted" options:0 context:nil];
+	[[SkypeController sharedSkypeController] addObserver:self forKeyPath:@"connected" options:0 context:nil];
 	[[SkypeController sharedSkypeController] connectToSkype];
 }
 
@@ -177,7 +178,7 @@ enum {
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqualToString:@"muted"]) {
+	if ([keyPath isEqualToString:@"muted"] || [keyPath isEqualToString:@"connected"]) {
 		[self updateMenuToSkypeState];
 	}
 }
