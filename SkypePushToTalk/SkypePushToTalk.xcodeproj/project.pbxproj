@@ -15,6 +15,10 @@
 		433C11B1125B0FC40032DD5A /* SkypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 433C11B0125B0FC40032DD5A /* SkypeController.m */; };
 		433C11E1125B16270032DD5A /* Skype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433C11E0125B16270032DD5A /* Skype.framework */; };
 		433C11ED125B164C0032DD5A /* Skype.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 433C11E0125B16270032DD5A /* Skype.framework */; };
+		433C12CF125B2A220032DD5A /* ptt-menubar-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 433C12CC125B2A220032DD5A /* ptt-menubar-active.png */; };
+		433C12D0125B2A220032DD5A /* ptt-menubar-muted.png in Resources */ = {isa = PBXBuildFile; fileRef = 433C12CD125B2A220032DD5A /* ptt-menubar-muted.png */; };
+		433C12D1125B2A220032DD5A /* ptt-menubar-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 433C12CE125B2A220032DD5A /* ptt-menubar-normal.png */; };
+		433C12EB125B2CF00032DD5A /* ptt-menubar-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 433C12EA125B2CF00032DD5A /* ptt-menubar-highlighted.png */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -53,6 +57,10 @@
 		433C11AF125B0FC40032DD5A /* SkypeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkypeController.h; sourceTree = "<group>"; };
 		433C11B0125B0FC40032DD5A /* SkypeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkypeController.m; sourceTree = "<group>"; };
 		433C11E0125B16270032DD5A /* Skype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Skype.framework; path = Lib/Skype.framework; sourceTree = "<group>"; };
+		433C12CC125B2A220032DD5A /* ptt-menubar-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ptt-menubar-active.png"; sourceTree = "<group>"; };
+		433C12CD125B2A220032DD5A /* ptt-menubar-muted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ptt-menubar-muted.png"; sourceTree = "<group>"; };
+		433C12CE125B2A220032DD5A /* ptt-menubar-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ptt-menubar-normal.png"; sourceTree = "<group>"; };
+		433C12EA125B2CF00032DD5A /* ptt-menubar-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ptt-menubar-highlighted.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SkypePushToTalk-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SkypePushToTalk-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* SkypePushToTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkypePushToTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -134,6 +142,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				433C12CB125B2A220032DD5A /* Icons */,
 				8D1107310486CEB800E47090 /* SkypePushToTalk-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -194,6 +203,17 @@
 			path = Skype;
 			sourceTree = "<group>";
 		};
+		433C12CB125B2A220032DD5A /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				433C12CC125B2A220032DD5A /* ptt-menubar-active.png */,
+				433C12CD125B2A220032DD5A /* ptt-menubar-muted.png */,
+				433C12CE125B2A220032DD5A /* ptt-menubar-normal.png */,
+				433C12EA125B2CF00032DD5A /* ptt-menubar-highlighted.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,6 +260,10 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				433C12CF125B2A220032DD5A /* ptt-menubar-active.png in Resources */,
+				433C12D0125B2A220032DD5A /* ptt-menubar-muted.png in Resources */,
+				433C12D1125B2A220032DD5A /* ptt-menubar-normal.png in Resources */,
+				433C12EB125B2CF00032DD5A /* ptt-menubar-highlighted.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

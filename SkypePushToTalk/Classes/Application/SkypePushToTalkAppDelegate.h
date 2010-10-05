@@ -14,8 +14,11 @@
 	NSStatusItem *_statusItem;
 	DDHotKeyCenter *_hotKeyCenter;
 
+	NSImage *_iconNormal, *_iconActive, *_iconMuted;
+
 	BOOL _hotKeyDownReceived;
 	BOOL _wasMutedAtKeyDown;
+	BOOL _showPushToTalkActive;
 	NSTimeInterval _hotKeyDownAt;
 }
 
