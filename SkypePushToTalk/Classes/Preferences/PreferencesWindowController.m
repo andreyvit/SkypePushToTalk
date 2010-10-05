@@ -16,7 +16,7 @@
 
 
 - (NSString *)versionString {
-	return [NSString stringWithFormat:@"Push-To-Talk %@", [[[NSBundle mainBundle] infoDictionary] objectForKey: @"CFBundleVersion"]];
+	return [NSString stringWithFormat:@"Push-To-Talk %@", [[[NSBundle mainBundle] infoDictionary] objectForKey: @"CFBundleShortVersionString"]];
 }
 
 - (id)init {
