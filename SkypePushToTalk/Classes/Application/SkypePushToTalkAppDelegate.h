@@ -6,6 +6,9 @@
 @interface SkypePushToTalkAppDelegate : NSObject <NSApplicationDelegate> {
 	IBOutlet NSMenu *_statusItemMenu;
 	IBOutlet NSMenuItem *_openAtLoginMenuItem;
+	IBOutlet NSMenuItem *_connectionErrorMenuItem;
+	IBOutlet NSMenuItem *_muteMenuItem;
+	IBOutlet NSMenuItem *_unmuteMenuItem;
 
     NSWindow *window;
 	NSStatusItem *_statusItem;
@@ -16,5 +19,7 @@
 
 - (IBAction)quitApplication:(id)sender;
 - (IBAction)toggleOpenAtLogin:(id)sender;
+- (IBAction)muteSkype:(id)sender;
+- (IBAction)unmuteSkype:(id)sender;
 
 @end

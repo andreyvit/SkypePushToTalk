@@ -2,6 +2,8 @@
 #import "SkypePushToTalkAppDelegate.h"
 #import "DDHotKeyCenter.h"
 #import "LoginItemController.h"
+#import "SkypeController.h"
+
 
 // copied from Carbon to avoid inclusion
 enum {
@@ -12,6 +14,7 @@ enum {
 @interface SkypePushToTalkAppDelegate ()
 
 - (void)updateOpenAtLoginMenuItem;
+- (void)updateMenuToSkypeState;
 
 @end
 
@@ -31,6 +34,10 @@ enum {
 	NSAssert(hotKeyOK, @"Cannot register hotkey");
 
 	[self updateOpenAtLoginMenuItem];
+	[self updateMenuToSkypeState];
+
+	[[SkypeController sharedSkypeController] addObserver:self forKeyPath:@"muted" options:0 context:nil];
+	[[SkypeController sharedSkypeController] connectToSkype];
 }
 
 - (IBAction)quitApplication:(id)sender {
@@ -38,7 +45,11 @@ enum {
 }
 
 - (void)pushToTalkPressed:(NSEvent *)event {
-	[[NSApplication sharedApplication] terminate:self];
+	BOOL avail = [SkypeController sharedSkypeController].connected;
+	if (avail) {
+		BOOL muted = [[SkypeController sharedSkypeController] isMuted];
+		[[SkypeController sharedSkypeController] setMuted:!muted];
+	}
 }
 
 
@@ -52,6 +63,36 @@ enum {
 
 - (void)updateOpenAtLoginMenuItem {
 	[_openAtLoginMenuItem setState:([LoginItemController sharedController].loginItemEnabled ? NSOnState : NSOffState)];
+}
+
+
+#pragma mark -
+#pragma mark Muting Skype
+
+- (IBAction)muteSkype:(id)sender {
+	[[SkypeController sharedSkypeController] setMuted:YES];
+}
+
+- (IBAction)unmuteSkype:(id)sender {
+	[[SkypeController sharedSkypeController] setMuted:NO];
+}
+
+
+#pragma mark -
+#pragma mark KVO notifications
+
+- (void)updateMenuToSkypeState {
+	BOOL muted = [[SkypeController sharedSkypeController] isMuted];
+	BOOL avail = [SkypeController sharedSkypeController].connected;
+	[_connectionErrorMenuItem setHidden:avail];
+	[_muteMenuItem setHidden:!avail || muted];
+	[_unmuteMenuItem setHidden:!avail || !muted];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqualToString:@"muted"]) {
+		[self updateMenuToSkypeState];
+	}
 }
 
 

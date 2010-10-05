@@ -1314,20 +1314,37 @@
 				</object>
 				<string key="NSName">_NSMainMenu</string>
 			</object>
-			<object class="NSMenu" id="757954839">
+			<object class="NSMenu" id="383648417">
 				<string key="NSTitle"/>
 				<object class="NSMutableArray" key="NSMenuItems">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="NSMenuItem" id="489573068">
-						<reference key="NSMenu" ref="757954839"/>
-						<string key="NSTitle">Open at Login</string>
+					<object class="NSMenuItem" id="206969542">
+						<reference key="NSMenu" ref="383648417"/>
+						<bool key="NSIsDisabled">YES</bool>
+						<string key="NSTitle">Skype Not Available</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="35465992"/>
 						<reference key="NSMixedImage" ref="502551668"/>
 					</object>
-					<object class="NSMenuItem" id="556587094">
-						<reference key="NSMenu" ref="757954839"/>
+					<object class="NSMenuItem" id="839819338">
+						<reference key="NSMenu" ref="383648417"/>
+						<string key="NSTitle">Mute Skype</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+					</object>
+					<object class="NSMenuItem" id="1006126289">
+						<reference key="NSMenu" ref="383648417"/>
+						<string key="NSTitle">Unmute Skype</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+					</object>
+					<object class="NSMenuItem" id="128375894">
+						<reference key="NSMenu" ref="383648417"/>
 						<bool key="NSIsDisabled">YES</bool>
 						<bool key="NSIsSeparator">YES</bool>
 						<string key="NSTitle"/>
@@ -1336,8 +1353,26 @@
 						<reference key="NSOnImage" ref="35465992"/>
 						<reference key="NSMixedImage" ref="502551668"/>
 					</object>
-					<object class="NSMenuItem" id="962481249">
-						<reference key="NSMenu" ref="757954839"/>
+					<object class="NSMenuItem" id="383191066">
+						<reference key="NSMenu" ref="383648417"/>
+						<string key="NSTitle">Open at Login</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+					</object>
+					<object class="NSMenuItem" id="559369970">
+						<reference key="NSMenu" ref="383648417"/>
+						<bool key="NSIsDisabled">YES</bool>
+						<bool key="NSIsSeparator">YES</bool>
+						<string key="NSTitle"/>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+					</object>
+					<object class="NSMenuItem" id="754056458">
+						<reference key="NSMenu" ref="383648417"/>
 						<string key="NSTitle">Quit Push-To-Talk</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
@@ -2032,7 +2067,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">_statusItemMenu</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="757954839"/>
+						<reference key="destination" ref="383648417"/>
 					</object>
 					<int key="connectionID">543</int>
 				</object>
@@ -2040,7 +2075,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">quitApplication:</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="962481249"/>
+						<reference key="destination" ref="754056458"/>
 					</object>
 					<int key="connectionID">544</int>
 				</object>
@@ -2048,7 +2083,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">toggleOpenAtLogin:</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="489573068"/>
+						<reference key="destination" ref="383191066"/>
 					</object>
 					<int key="connectionID">551</int>
 				</object>
@@ -2056,9 +2091,49 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">_openAtLoginMenuItem</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="489573068"/>
+						<reference key="destination" ref="383191066"/>
 					</object>
 					<int key="connectionID">552</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">unmuteSkype:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1006126289"/>
+					</object>
+					<int key="connectionID">556</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">muteSkype:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="839819338"/>
+					</object>
+					<int key="connectionID">557</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">_muteMenuItem</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="839819338"/>
+					</object>
+					<int key="connectionID">558</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">_unmuteMenuItem</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1006126289"/>
+					</object>
+					<int key="connectionID">559</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">_connectionErrorMenuItem</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="206969542"/>
+					</object>
+					<int key="connectionID">562</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3089,29 +3164,53 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">533</int>
-						<reference key="object" ref="757954839"/>
+						<reference key="object" ref="383648417"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="962481249"/>
-							<reference ref="556587094"/>
-							<reference ref="489573068"/>
+							<reference ref="754056458"/>
+							<reference ref="559369970"/>
+							<reference ref="383191066"/>
+							<reference ref="128375894"/>
+							<reference ref="839819338"/>
+							<reference ref="1006126289"/>
+							<reference ref="206969542"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">536</int>
-						<reference key="object" ref="962481249"/>
-						<reference key="parent" ref="757954839"/>
+						<reference key="object" ref="754056458"/>
+						<reference key="parent" ref="383648417"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">548</int>
-						<reference key="object" ref="556587094"/>
-						<reference key="parent" ref="757954839"/>
+						<reference key="object" ref="559369970"/>
+						<reference key="parent" ref="383648417"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">550</int>
-						<reference key="object" ref="489573068"/>
-						<reference key="parent" ref="757954839"/>
+						<reference key="object" ref="383191066"/>
+						<reference key="parent" ref="383648417"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">553</int>
+						<reference key="object" ref="128375894"/>
+						<reference key="parent" ref="383648417"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">554</int>
+						<reference key="object" ref="839819338"/>
+						<reference key="parent" ref="383648417"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">555</int>
+						<reference key="object" ref="1006126289"/>
+						<reference key="parent" ref="383648417"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">560</int>
+						<reference key="object" ref="206969542"/>
+						<reference key="parent" ref="383648417"/>
 					</object>
 				</object>
 			</object>
@@ -3333,8 +3432,12 @@
 					<string>536.IBPluginDependency</string>
 					<string>548.IBPluginDependency</string>
 					<string>550.IBPluginDependency</string>
+					<string>553.IBPluginDependency</string>
+					<string>554.IBPluginDependency</string>
+					<string>555.IBPluginDependency</string>
 					<string>56.IBPluginDependency</string>
 					<string>56.ImportedFromIB2</string>
+					<string>560.IBPluginDependency</string>
 					<string>57.IBEditorWindowLastContentRect</string>
 					<string>57.IBPluginDependency</string>
 					<string>57.ImportedFromIB2</string>
@@ -3579,13 +3682,17 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{352, 389}, {180, 53}}</string>
+					<string>{{352, 319}, {186, 123}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{286, 129}, {275, 183}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
@@ -3636,7 +3743,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">552</int>
+			<int key="maxID">562</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3648,11 +3755,15 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>muteSkype:</string>
 							<string>quitApplication:</string>
 							<string>toggleOpenAtLogin:</string>
+							<string>unmuteSkype:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -3661,14 +3772,20 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>_connectionErrorMenuItem</string>
+							<string>_muteMenuItem</string>
 							<string>_openAtLoginMenuItem</string>
 							<string>_statusItemMenu</string>
+							<string>_unmuteMenuItem</string>
 							<string>window</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
 							<string>NSMenu</string>
+							<string>NSMenuItem</string>
 							<string>NSWindow</string>
 						</object>
 					</object>
@@ -4087,6 +4204,13 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">Foundation.framework/Headers/NSURLDownload.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">Skype.framework/Headers/SkypeAPI.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
